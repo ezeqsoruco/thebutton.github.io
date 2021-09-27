@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col" *ngFor="let user of usuariosTanda1">
+        <div class="card">
+            <div class="card-header">
+                user: {{user.username}}
+            </div>
+            <div class="card-body">
+                <app-usuarios [usuario]="user.username" (newItemEvent)="agregarClickUsuario($event)"></app-usuarios>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="row div-contador" [ngStyle]="{'background-color':color}">
+        <h4>{{username}}</h4>
+        <h1>
+            <span> {{timeLeft}} </span>
+        </h1>
+    </div>
+    <div style="text-align: center;">
+        <button type="button" class="btn" (click)="reset()" data-bs-toggle="modal"
+            data-bs-target="#exampleModalCenteredScrollable">
+            <img src="https://cdn-icons-png.flaticon.com/512/1536/1536958.png" width="150px">
+        </button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col" *ngFor="let user of usuariosTanda2">
+        <div class="card">
+            <div class="card-header">
+                user: {{user.username}}
+            </div>
+            <div class="card-body">
+                <app-usuarios [usuario]="user.username" (newItemEvent)="agregarClickUsuario($event)"></app-usuarios>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1"
+    aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Results</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h5>Colors for each user</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Color</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of resultadoUsuarios; let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{user.username}}</td>
+                                <td>{{user.color}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h5>Statistics</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let result of estadistica; let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{result.color}}</td>
+                                <td>{{result.cantidad}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

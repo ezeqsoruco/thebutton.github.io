@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.div-contador{
+    margin: 0rem;
+    /*background-color: coral;*/
+    border-radius: 1rem;
+}
